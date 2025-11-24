@@ -7,7 +7,7 @@ h2:benchmark-datasets-for-ppi-prediction 7.3 Benchmark Datasets for PPI Predicti
 h3:docking-benchmarks 
 h3:deep-learning-benchmarks 
 h3:sequence-based-prediction-benchmarks 
-h2:tools-and-servers-summary-all-methods-in-this-book 7.4 Tools and Servers Summary (All Methods in This Book)
+h2:tools-and-servers-summary 7.4 Tools and Servers Summary
 h3:docking-tools-chapter-2 
 h3:structure-analysis-chapter-3 
 h3:sequence-knowledgebased-models-chapter-4 

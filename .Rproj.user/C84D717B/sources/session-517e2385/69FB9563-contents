@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 References &amp; External Resources | Protein–Protein Interaction (PPI) Prediction Methods Summary</title>
+  <title>Protein–Protein Interaction (PPI) Prediction Methods Summary</title>
   <meta name="description" content="A summary of computational methods for protein–protein interaction (PPI) prediction, including docking-based approaches, structural analysis, sequence/knowledge-based models, deep learning frameworks, and structure-generation models." />
   <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 References &amp; External Resources | Protein–Protein Interaction (PPI) Prediction Methods Summary" />
+  <meta property="og:title" content="Protein–Protein Interaction (PPI) Prediction Methods Summary" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="A summary of computational methods for protein–protein interaction (PPI) prediction, including docking-based approaches, structural analysis, sequence/knowledge-based models, deep learning frameworks, and structure-generation models." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 References &amp; External Resources | Protein–Protein Interaction (PPI) Prediction Methods Summary" />
+  <meta name="twitter:title" content="Protein–Protein Interaction (PPI) Prediction Methods Summary" />
   
   <meta name="twitter:description" content="A summary of computational methods for protein–protein interaction (PPI) prediction, including docking-based approaches, structural analysis, sequence/knowledge-based models, deep learning frameworks, and structure-generation models." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="structure-generation.html"/>
 
+<link rel="next" href="intro.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -362,7 +362,7 @@
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html#deep-learning-benchmarks"><i class="fa fa-check"></i><strong>Deep Learning Benchmarks</strong></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html#sequence-based-prediction-benchmarks"><i class="fa fa-check"></i><strong>Sequence-Based Prediction Benchmarks</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html#tools-and-servers-summary"><i class="fa fa-check"></i>7.4 Tools and Servers Summary</a>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html#tools-and-servers-summary-all-methods-in-this-book"><i class="fa fa-check"></i>7.4 Tools and Servers Summary (All Methods in This Book)</a>
 <ul>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html#docking-tools-chapter-2"><i class="fa fa-check"></i><strong>Docking Tools (Chapter 2)</strong></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html#structure-analysis-chapter-3"><i class="fa fa-check"></i><strong>Structure Analysis (Chapter 3)</strong></a></li>
@@ -392,466 +392,38 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> References &amp; External Resources<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This chapter provides a consolidated list of resources useful for protein–protein interaction (PPI) research, including databases, benchmark datasets, computational tools, and recommended literature.<br />
-These resources support the methodologies described in Chapters 1–6.</p>
-<hr />
-<div id="major-ppi-databases" class="section level2 unnumbered hasAnchor">
-<h2>7.1 Major PPI Databases<a href="references.html#major-ppi-databases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>These databases curate experimentally validated or computationally predicted PPIs.</p>
-<div id="general-ppi-databases" class="section level3 unnumbered hasAnchor">
-<h3><strong>General PPI Databases</strong><a href="references.html#general-ppi-databases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="41%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Database</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>STRING</strong></td>
-<td>Integrated PPI database combining experiments, text-mining, co-expression, and genomics</td>
-<td><a href="https://string-db.org" class="uri">https://string-db.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>BioGRID</strong></td>
-<td>Curated experimental PPI database</td>
-<td><a href="https://thebiogrid.org" class="uri">https://thebiogrid.org</a></td>
-</tr>
-<tr class="odd">
-<td><strong>IntAct</strong></td>
-<td>EBI repository for experimentally validated PPIs</td>
-<td><a href="https://www.ebi.ac.uk/intact" class="uri">https://www.ebi.ac.uk/intact</a></td>
-</tr>
-<tr class="even">
-<td><strong>DIP</strong></td>
-<td>Database of Interaction Proteins</td>
-<td><a href="http://dip.doe-mbi.ucla.edu" class="uri">http://dip.doe-mbi.ucla.edu</a></td>
-</tr>
-<tr class="odd">
-<td><strong>HINT</strong></td>
-<td>High-quality interactomes across species</td>
-<td><a href="http://hint.yulab.org" class="uri">http://hint.yulab.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>MINT</strong></td>
-<td>Molecular Interaction database</td>
-<td><a href="https://mint.bio.uniroma1.it" class="uri">https://mint.bio.uniroma1.it</a></td>
-</tr>
-<tr class="odd">
-<td><strong>HuRI</strong></td>
-<td>Human Reference Interactome (Y2H-based)</td>
-<td><a href="https://interactome.baderlab.org" class="uri">https://interactome.baderlab.org</a></td>
-</tr>
-</tbody>
-</table>
+<div id="header">
+<h1 class="title">Protein–Protein Interaction (PPI) Prediction Methods Summary</h1>
+<p class="author"><em>Haoyi Yang</em></p>
+<p class="date"><em>2025-11-24</em></p>
 </div>
-<div id="specialized-ppi-and-interaction-databases" class="section level3 unnumbered hasAnchor">
-<h3><strong>Specialized PPI and Interaction Databases</strong><a href="references.html#specialized-ppi-and-interaction-databases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="41%" />
-<col width="33%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Database</th>
-<th>Focus</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>STRING Viruses</strong></td>
-<td>Viral-host PPIs</td>
-<td><a href="https://viruses.string-db.org" class="uri">https://viruses.string-db.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>CORUM</strong></td>
-<td>Protein complexes in human/mouse</td>
-<td><a href="https://mips.helmholtz-muenchen.de/corum" class="uri">https://mips.helmholtz-muenchen.de/corum</a></td>
-</tr>
-<tr class="odd">
-<td><strong>3did</strong></td>
-<td>Domain–domain interactions</td>
-<td><a href="https://3did.irbbarcelona.org" class="uri">https://3did.irbbarcelona.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>iRefWeb</strong></td>
-<td>Integrated interaction resource</td>
-<td><a href="http://irefindex.org" class="uri">http://irefindex.org</a></td>
-</tr>
-</tbody>
-</table>
-<hr />
-</div>
-</div>
-<div id="structural-databases-for-ppi-analysis" class="section level2 unnumbered hasAnchor">
-<h2>7.2 Structural Databases for PPI Analysis<a href="references.html#structural-databases-for-ppi-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="41%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Database</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>PDB</strong></td>
-<td>Worldwide Protein Data Bank</td>
-<td><a href="https://www.rcsb.org" class="uri">https://www.rcsb.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>PDBePISA</strong></td>
-<td>Interface &amp; assembly analysis</td>
-<td><a href="https://www.ebi.ac.uk/pdbe/pisa" class="uri">https://www.ebi.ac.uk/pdbe/pisa</a></td>
-</tr>
-<tr class="odd">
-<td><strong>HSSP</strong></td>
-<td>Homology-derived structures</td>
-<td><a href="https://swift.cmbi.umcn.nl/gv/hssp" class="uri">https://swift.cmbi.umcn.nl/gv/hssp</a></td>
-</tr>
-<tr class="even">
-<td><strong>IBIS</strong></td>
-<td>PPI structural templates</td>
-<td><a href="https://www.ncbi.nlm.nih.gov/Structure/ibis/ibis.cgi" class="uri">https://www.ncbi.nlm.nih.gov/Structure/ibis/ibis.cgi</a></td>
-</tr>
-</tbody>
-</table>
-<hr />
-</div>
-<div id="benchmark-datasets-for-ppi-prediction" class="section level2 unnumbered hasAnchor">
-<h2>7.3 Benchmark Datasets for PPI Prediction<a href="references.html#benchmark-datasets-for-ppi-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Benchmark datasets are essential for evaluating PPI models, docking pipelines, and multimer prediction.</p>
-<div id="docking-benchmarks" class="section level3 unnumbered hasAnchor">
-<h3><strong>Docking Benchmarks</strong><a href="references.html#docking-benchmarks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="31%" />
-<col width="43%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Docking Benchmark v5.0 (DB5)</strong></td>
-<td>Gold-standard dataset for protein docking</td>
-<td><a href="https://zlab.umassmed.edu/benchmark" class="uri">https://zlab.umassmed.edu/benchmark</a></td>
-</tr>
-<tr class="even">
-<td><strong>CAPRI</strong></td>
-<td>Community-wide docking assessment</td>
-<td><a href="https://www.ebi.ac.uk/pdbe/complex-pred/capri" class="uri">https://www.ebi.ac.uk/pdbe/complex-pred/capri</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="deep-learning-benchmarks" class="section level3 unnumbered hasAnchor">
-<h3><strong>Deep Learning Benchmarks</strong><a href="references.html#deep-learning-benchmarks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="31%" />
-<col width="43%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th>Description</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>DIPS</strong></td>
-<td>42,000 PPI complexes for ML training</td>
-<td><a href="https://github.com/phillipburgess/DIPS" class="uri">https://github.com/phillipburgess/DIPS</a></td>
-</tr>
-<tr class="even">
-<td><strong>SKEMPI</strong></td>
-<td>ΔΔG mutation effects on PPIs</td>
-<td><a href="https://life.bsc.es/pid/skempi" class="uri">https://life.bsc.es/pid/skempi</a></td>
-</tr>
-<tr class="odd">
-<td><strong>STRING-ML / BioGRID-ML</strong></td>
-<td>ML-ready PPI datasets from STRING/BioGRID</td>
-<td>(various GitHub repos)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="sequence-based-prediction-benchmarks" class="section level3 unnumbered hasAnchor">
-<h3><strong>Sequence-Based Prediction Benchmarks</strong><a href="references.html#sequence-based-prediction-benchmarks" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="38%" />
-<col width="34%" />
-<col width="26%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Dataset</th>
-<th>Focus</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>HopPPI</strong></td>
-<td>Sequence-based PPI benchmarks</td>
-<td><a href="https://github.com/caoyx1999/HopPPI" class="uri">https://github.com/caoyx1999/HopPPI</a></td>
-</tr>
-<tr class="even">
-<td><strong>HHRI Dataset</strong></td>
-<td>Human–human PPI benchmark</td>
-<td>widely used in DL PPI papers</td>
-</tr>
-</tbody>
-</table>
-<hr />
-</div>
-</div>
-<div id="tools-and-servers-summary" class="section level2 unnumbered hasAnchor">
-<h2>7.4 Tools and Servers Summary<a href="references.html#tools-and-servers-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This section summarizes the computational tools introduced in Chapters 2–6.</p>
-<div id="docking-tools-chapter-2" class="section level3 unnumbered hasAnchor">
-<h3><strong>Docking Tools (Chapter 2)</strong><a href="references.html#docking-tools-chapter-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Type</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>HADDOCK</strong></td>
-<td>Flexible/data-driven docking</td>
-<td><a href="https://wenmr.science.uu.nl/haddock2.4" class="uri">https://wenmr.science.uu.nl/haddock2.4</a></td>
-</tr>
-<tr class="even">
-<td><strong>HDOCK Server</strong></td>
-<td>Hybrid docking</td>
-<td><a href="http://hdock.phys.hust.edu.cn" class="uri">http://hdock.phys.hust.edu.cn</a></td>
-</tr>
-<tr class="odd">
-<td><strong>ClusPro</strong></td>
-<td>Rigid-body docking</td>
-<td><a href="https://cluspro.bu.edu" class="uri">https://cluspro.bu.edu</a></td>
-</tr>
-<tr class="even">
-<td><strong>ZDOCK</strong></td>
-<td>FFT-based docking</td>
-<td><a href="https://zdock.umassmed.edu" class="uri">https://zdock.umassmed.edu</a></td>
-</tr>
-<tr class="odd">
-<td><strong>GRAMM</strong></td>
-<td>Grid-based docking</td>
-<td><a href="http://vakser.bioinformatics.ku.edu/resources/gramm" class="uri">http://vakser.bioinformatics.ku.edu/resources/gramm</a></td>
-</tr>
-<tr class="even">
-<td><strong>pyDock</strong></td>
-<td>Scoring only</td>
-<td><a href="https://life.bsc.es/pid/pydock" class="uri">https://life.bsc.es/pid/pydock</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="structure-analysis-chapter-3" class="section level3 unnumbered hasAnchor">
-<h3><strong>Structure Analysis (Chapter 3)</strong><a href="references.html#structure-analysis-chapter-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="27%" />
-<col width="44%" />
-<col width="27%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Purpose</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>PDBePISA</strong></td>
-<td>Interface &amp; assembly analysis</td>
-<td><a href="https://www.ebi.ac.uk/pdbe/pisa" class="uri">https://www.ebi.ac.uk/pdbe/pisa</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="sequence-knowledgebased-models-chapter-4" class="section level3 unnumbered hasAnchor">
-<h3><strong>Sequence / Knowledge–Based Models (Chapter 4)</strong><a href="references.html#sequence-knowledgebased-models-chapter-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Type</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>STRING</strong></td>
-<td>Network-based PPI</td>
-<td><a href="https://string-db.org" class="uri">https://string-db.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>PrePPI</strong></td>
-<td>Hybrid sequence/template</td>
-<td><a href="https://honiglab.c2b2.columbia.edu/PrePPI" class="uri">https://honiglab.c2b2.columbia.edu/PrePPI</a></td>
-</tr>
-<tr class="odd">
-<td><strong>PPI-Miner</strong></td>
-<td>Literature mining</td>
-<td><a href="http://caps.ncbs.res.in/ppiminer" class="uri">http://caps.ncbs.res.in/ppiminer</a></td>
-</tr>
-<tr class="even">
-<td><strong>COTH</strong></td>
-<td>Template-based threading</td>
-<td><a href="https://zhanggroup.org/COTH" class="uri">https://zhanggroup.org/COTH</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="deep-learning-models-chapter-5" class="section level3 unnumbered hasAnchor">
-<h3><strong>Deep Learning Models (Chapter 5)</strong><a href="references.html#deep-learning-models-chapter-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Type</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>D-SCRIPT</strong></td>
-<td>Sequence → contact map → PPI</td>
-<td><a href="https://github.com/flatironinstitute/DSCRIPT" class="uri">https://github.com/flatironinstitute/DSCRIPT</a></td>
-</tr>
-<tr class="even">
-<td><strong>DeepPurpose</strong></td>
-<td>Multi-encoder deep model</td>
-<td><a href="https://github.com/kexinhuang12345/DeepPurpose" class="uri">https://github.com/kexinhuang12345/DeepPurpose</a></td>
-</tr>
-<tr class="odd">
-<td><strong>MAPE-PPI</strong></td>
-<td>Multi-view attention DL model</td>
-<td><a href="https://github.com/LirongWu/MAPE-PPI" class="uri">https://github.com/LirongWu/MAPE-PPI</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="structure-generation-tools-chapter-6" class="section level3 unnumbered hasAnchor">
-<h3><strong>Structure-Generation Tools (Chapter 6)</strong><a href="references.html#structure-generation-tools-chapter-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<table>
-<colgroup>
-<col width="27%" />
-<col width="44%" />
-<col width="27%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Purpose</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>AlphaFold-Multimer</strong></td>
-<td>Complex structure prediction</td>
-<td><a href="https://github.com/deepmind/alphafold" class="uri">https://github.com/deepmind/alphafold</a></td>
-</tr>
-</tbody>
-</table>
-<hr />
-</div>
-</div>
-<div id="references-1" class="section level2 unnumbered hasAnchor">
-<h2>7.5 References<a href="references.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>HADDOCK</strong></p>
-<p>Dominguez, C., Boelens, R., &amp; Bonvin, A. M. J. J. (2003). HADDOCK: A protein−protein docking approach based on biochemical or biophysical information. Journal of the American Chemical Society, 125(7), 1731–1737. <a href="https://doi.org/10.1021/ja026939x" class="uri">https://doi.org/10.1021/ja026939x</a></p>
-<p>van Zundert, G. C. P., Rodrigues, J. P. G. L. M., Trellet, M., Schmitz, C., Kastritis, P. L., Karaca, E., Melquiond, A. S. J., van Dijk, M., de Vries, S. J., &amp; Bonvin, A. M. J. J. (2016). The HADDOCK2.2 Web server: User-Friendly integrative modeling of biomolecular complexes. Journal of Molecular Biology, 428(4), 720–725. <a href="https://doi.org/10.1016/j.jmb.2015.09.014" class="uri">https://doi.org/10.1016/j.jmb.2015.09.014</a></p>
-<p><strong>HDOCK Server</strong></p>
-<p>Yan, Y., Zhang, D., Zhou, P., Li, B., &amp; Huang, S.-Y. (2017). HDOCK: A web server for protein–protein and protein–DNA/RNA docking based on a hybrid strategy. Nucleic Acids Research, 45(W1), W365–W373. <a href="https://doi.org/10.1093/nar/gkx407" class="uri">https://doi.org/10.1093/nar/gkx407</a></p>
-<p><strong>ClusPro</strong></p>
-<p>Comeau, S. R., Gatchell, D. W., Vajda, S., &amp; Camacho, C. J. (2004). ClusPro: An automated docking and discrimination method for the prediction of protein complexes. Bioinformatics, 20(1), 45–50. <a href="https://doi.org/10.1093/bioinformatics/btg371" class="uri">https://doi.org/10.1093/bioinformatics/btg371</a></p>
-<p>Kozakov, D., Hall, D. R., Xia, B., Porter, K. A., Padhorny, D., Yueh, C., Beglov, D., &amp; Vajda, S. (2017). The ClusPro web server for protein–protein docking. Nature Protocols, 12(2), 255–278. <a href="https://doi.org/10.1038/nprot.2016.169" class="uri">https://doi.org/10.1038/nprot.2016.169</a></p>
-<p><strong>ZDOCK</strong></p>
-<p>Chen, R., Li, L., &amp; Weng, Z. (2003). ZDOCK: An initial‐stage protein‐docking algorithm. Proteins: Structure, Function, and Bioinformatics, 52(1), 80–87. <a href="https://doi.org/10.1002/prot.10389" class="uri">https://doi.org/10.1002/prot.10389</a></p>
-<p><strong>GRAMM (Vakser Lab)</strong></p>
-<p>Singh, A., Copeland, M. M., Kundrotas, P. J., &amp; Vakser, I. A. (2023). Gramm: A webserver for free and template-based protein docking. Biophysical Journal, 122(3), 47a. <a href="https://doi.org/10.1016/j.bpj.2022.11.463" class="uri">https://doi.org/10.1016/j.bpj.2022.11.463</a></p>
-<p><strong>pyDock</strong></p>
-<p>Jiménez-García, B., Pons, C., &amp; Fernández-Recio, J. (2013). pyDockWEB: A web server for rigid-body protein–protein docking using electrostatics and desolvation scoring. Bioinformatics, 29(13), 1698–1699. <a href="https://doi.org/10.1093/bioinformatics/btt262" class="uri">https://doi.org/10.1093/bioinformatics/btt262</a></p>
-<p><strong>PDBePISA</strong></p>
-<p>Krissinel, E., &amp; Henrick, K. (2007). Inference of macromolecular assemblies from crystalline state. Journal of Molecular Biology, 372(3), 774–797. <a href="https://doi.org/10.1016/j.jmb.2007.05.022" class="uri">https://doi.org/10.1016/j.jmb.2007.05.022</a></p>
-<p><strong>STRING</strong></p>
-<p>Szklarczyk, D., Gable, A. L., Lyon, D., Junge, A., Wyder, S., Huerta-Cepas, J., Simonovic, M., Doncheva, N. T., Morris, J. H., Bork, P., Jensen, L. J., &amp; Mering, C. von. (2018). STRING v11: Protein–protein association networks with increased coverage, supporting functional discovery in genome-wide experimental datasets. Nucleic Acids Research, 47(D1), D607–D613. <a href="https://doi.org/10.1093/nar/gky1131" class="uri">https://doi.org/10.1093/nar/gky1131</a></p>
-<p><strong>PrePPI</strong></p>
-<p>Petrey, D., Zhao, H., Trudeau, S., Murray, D., &amp; Honig, B. (2023). PrePPI: A structure informed proteome-wide database of protein-protein interactions. Cold Spring Harbor Laboratory. <a href="https://doi.org/10.1101/2023.02.27.530276" class="uri">https://doi.org/10.1101/2023.02.27.530276</a></p>
-<p><strong>PPI-Miner</strong></p>
-<p>PPI-Miner: A structure and sequence motif co-driven proteinprotein interaction mining and modeling computational method. (n.d.). <a href="https://doi.org/10.1021/acs.jcim.2c01033.s001" class="uri">https://doi.org/10.1021/acs.jcim.2c01033.s001</a></p>
-<p><strong>D-SCRIPT</strong></p>
-<p>Sledzieski, S., Singh, R., Cowen, L., &amp; Berger, B. (2021). D-SCRIPT translates genome to phenome with sequence-based, structure-aware, genome-scale predictions of protein-protein interactions. Cell Systems, 12(10), 969-982.e6. <a href="https://doi.org/10.1016/j.cels.2021.08.010" class="uri">https://doi.org/10.1016/j.cels.2021.08.010</a></p>
-<p><strong>DeepPurpose</strong></p>
-<p>Huang, K., Fu, T., Glass, L. M., Zitnik, M., Xiao, C., &amp; Sun, J. (2020). DeepPurpose: A deep learning library for drug–target interaction prediction. Bioinformatics, 36(22–23), 5545–5547. <a href="https://doi.org/10.1093/bioinformatics/btaa1005" class="uri">https://doi.org/10.1093/bioinformatics/btaa1005</a></p>
-<p><strong>MAPE-PPI</strong></p>
-<p>Wu, L., Tian, Y., Huang, Y., Li, S., Lin, H., Chawla, N. V., &amp; Li, S. Z. (2024, February 22). MAPE-PPI: Towards effective and efficient protein-protein interaction prediction via microenvironment-aware protein embedding. arXiv.Org. <a href="https://arxiv.org/abs/2402.14391" class="uri">https://arxiv.org/abs/2402.14391</a></p>
-<p><strong>AlphaFold-Multimer</strong></p>
-<p>Adriaenssens, E. (2024). Protein structure prediction with AlphaFold-Multimer v1. ZappyLab, Inc. <a href="https://doi.org/10.17504/protocols.io.81wgbz25qgpk/v1" class="uri">https://doi.org/10.17504/protocols.io.81wgbz25qgpk/v1</a></p>
-<p><strong>DockQ</strong></p>
-<p>Basu, S., &amp; Wallner, B. (2016). DockQ: A quality measure for protein-protein docking models. PLOS ONE, 11(8), e0161879. <a href="https://doi.org/10.1371/journal.pone.0161879" class="uri">https://doi.org/10.1371/journal.pone.0161879</a></p>
+<div id="preface" class="section level1 unnumbered hasAnchor">
+<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This book is a comprehensive and structured summary of <strong>computational methods for Protein–Protein Interaction (PPI) prediction</strong>.<br />
+Its goal is to organize existing tools, prediction paradigms, and representative models into clear methodological categories, enabling both beginners and researchers to quickly understand the landscape of PPI analysis.</p>
+<p>The content is divided into five methodological categories:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Docking-based methods</strong><br />
+</li>
+<li><strong>Structure-based analysis and interface evaluation</strong><br />
+</li>
+<li><strong>Sequence / knowledge–based prediction methods</strong><br />
+</li>
+<li><strong>Deep learning–based approaches</strong><br />
+</li>
+<li><strong>Structure-generation frameworks such as AlphaFold-Multimer</strong></li>
+</ol>
+<p>Each chapter introduces the theory, representative tools, strengths, weaknesses, and practical usage suggestions.</p>
 <hr />
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="structure-generation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -882,7 +454,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/HayesYoung58/Protein-Protein-Interaction-PPI-Prediction-Methods-Summary/edit/main/07-references.Rmd",
+    "link": "https://github.com/HayesYoung58/Protein-Protein-Interaction-PPI-Prediction-Methods-Summary/edit/main/index.Rmd",
     "text": "Edit"
   },
   "history": {
