@@ -1,0 +1,259 @@
+# Structure Generation Methods: AlphaFold-Multimer {#structure-generation}
+
+Traditional docking-based methods (Chapter 2) attempt to sample and score possible orientations between proteins using structural information.  
+In contrast, **structure-generation approaches** directly produce **3D complex models from amino acid sequences**, without requiring docking or predefined interface hypotheses.
+
+The most successful and widely adopted structure-generation tool for PPIs is **AlphaFold-Multimer (AF-Multimer)**, an extension of AlphaFold2 capable of predicting protein complexes.
+
+---
+
+## 6.1 What Is AlphaFold-Multimer? {-}
+
+**AlphaFold-Multimer** is a deep learning framework designed to predict **multi-chain protein complex structures** using:
+
+- joint MSAs  
+- inter-chain co-evolution  
+- geometric pattern learning  
+- iterative recycling strategies  
+
+AF-Multimer outputs complete 3D structural models containing all protein chains in the complex.  
+This enables accurate prediction of **binding interfaces**, **assembly stoichiometry**, and **global arrangement**—something docking alone often cannot reliably achieve.
+
+---
+
+## 6.2 How AlphaFold-Multimer Works {-}
+
+AF-Multimer extends the original AlphaFold2 architecture in several ways:
+
+### **1. Joint MSA Construction** {-}
+AF-M attempts to pair homologous sequences across different species, identifying **co-evolutionary signals** between chains.
+
+- Paired MSAs (preferred)  
+- Unpaired MSAs (fallback)  
+- Concatenation of MSAs for all chains  
+
+### **2. Evoformer-Multimer Blocks** {-}
+The Evoformer is extended to enable:
+
+- cross-chain attention  
+- pair representation between chains  
+- inter-chain geometric reasoning  
+
+This allows the network to infer:
+
+- interface residue positions  
+- long-range inter-chain contacts  
+- the arrangement of chains in 3D space  
+
+### **3. Structure Module** {-}
+The structure module generates 3D coordinates using:
+
+- invariant point attention (IPA)  
+- torsion-angle prediction  
+- iterative recycling for refinement  
+
+### **4. Recycling** {-}
+Predictions are refined by feeding outputs back into the model several times, improving global geometry and interface accuracy.
+
+---
+
+## 6.3 Key Confidence Metrics (pLDDT, pTM, ipTM) {-}
+
+AlphaFold-Multimer provides several critical confidence metrics useful for assessing prediction quality:
+
+### **1. pLDDT — Local Confidence** {-}
+A per-residue score (0–100) indicating local structural accuracy.
+
+- >90: very high local confidence  
+- 70–90: reasonable  
+- <70: unreliable local structure  
+
+### **2. pTM — Predicted TM-score** {-}
+A global confidence metric evaluating the overall accuracy of the folded structure.
+
+### **3. ipTM — Inter-chain TM-score** {-}
+A **unique metric for multimers** that measures confidence in *inter-chain* geometry.
+
+ipTM is the most important indicator of whether AF-Multimer believes two proteins truly interact.
+
+- **> 0.6** → strong interface confidence  
+- **0.4–0.6** → uncertain interaction  
+- **< 0.4** → likely non-interacting or incorrect interface  
+
+### **Recommended composite score:** {-}
+- 0.8 * ipTM + 0.2 * pTM
+Used for ranking multiple Multimer models.
+
+---
+
+## 6.4 Predicted Aligned Error (PAE) {-}
+
+AF-Multimer outputs a **PAE matrix** describing predicted alignment error between all pairs of residues.
+
+Interpretation:
+
+- **Low inter-chain PAE** → reliable interface  
+- **High inter-chain PAE** → unstable / noisy binding interface  
+
+PAE is often more informative than pLDDT for multimer evaluation.
+
+---
+
+## 6.5 Evaluating AF-Multimer Predictions with DockQ {-}
+
+AF-Multimer structures are commonly benchmarked using **DockQ**, an established metric for evaluating protein complex models.
+
+DockQ incorporates:
+
+- Fnat (fraction of native contacts)  
+- LRMSD (ligand RMSD)  
+- iRMSD (interface RMSD)  
+
+### **DockQ score interpretation:** {-}
+
+| Score | Quality |
+|-------|---------|
+| >0.80 | High-quality complex |
+| 0.50–0.80 | Medium |
+| 0.23–0.50 | Acceptable |
+| <0.23 | Incorrect |
+
+DockQ is frequently used to:
+
+- benchmark AF-Multimer against docking  
+- evaluate modeled complexes  
+- compare multiple AF-M outputs  
+
+---
+
+## 6.6 Advantages of AlphaFold-Multimer {-}
+
+### **1. Predicts complexes directly from sequence** {-}
+A major advantage over docking.
+
+### **2. Often more accurate than docking** {-}
+Especially for obligate complexes with strong co-evolution signals.
+
+### **3. Provides residues-level interface confidence** {-}
+Through PAE and ipTM.
+
+### **4. Useful for protein design workflows** {-}
+Including:
+
+- binder design  
+- enzymatic complexes  
+- de novo scaffolds  
+- RFdiffusion outputs  
+
+### **5. Does not require templates or known interface information** {-}
+
+---
+
+## 6.7 Limitations of AlphaFold-Multimer {-}
+
+Despite its strengths, AF-Multimer has important limitations:
+
+### **1. Limited for transient or weak interactions** {-}
+Such interactions often lack evolutionary signals → low ipTM.
+
+### **2. Sensitive to MSA pairing** {-}
+Incorrect pairing → hallucinated or incorrect interfaces.
+
+### **3. May generate biologically irrelevant assemblies** {-}
+Spurious compact interfaces are common.
+
+### **4. Cannot explore alternative binding modes** {-}
+Docking is still needed for sampling conformational diversity.
+
+### **5. Poor performance for:** {-}
+- intrinsically disordered proteins (IDPs)  
+- large oligomers (>4–6 chains)  
+- systems with competing binding partners  
+- flexible multi-domain proteins  
+
+### **6. Not ideal for mutation scanning** {-}
+Relative ΔΔG is not reliable compared to specialized energetics tools.
+
+---
+
+## 6.8 Integrating AF-Multimer with Docking, PISA, and Deep Learning {-}
+
+A robust prediction workflow typically combines AF-Multimer with other methods:
+
+### **Step 1 — Sequence-Level Screening** {-}
+From Chapter 4–5:
+
+- STRING  
+- PrePPI  
+- D-SCRIPT  
+- DeepPurpose  
+- MAPE-PPI  
+
+→ identify candidates likely to interact.
+
+### **Step 2 — AF-Multimer Structure Prediction** {-}
+Run AF-Multimer using:
+
+- multiple seeds  
+- paired MSAs  
+- rank models by (0.8 × ipTM + 0.2 × pTM)
+
+### **Step 3 — Evaluate Interfaces** {-} 
+Use:
+
+- PAE  
+- ipTM  
+- pLDDT  
+
+### **Step 4 — Complement with Docking (Chapter 2)** {-}
+Docking is useful when:
+
+- AF-Multimer fails  
+- ipTM is low  
+- interfaces are ambiguous  
+- multiple poses are possible  
+
+Use methods such as:
+
+- HADDOCK  
+- HDOCK  
+- ClusPro  
+- ZDOCK  
+
+### **Step 5 — Interface Stability with PDBePISA (Chapter 3)** {-}
+Evaluate:
+
+- ΔG<sub>int</sub>  
+- ΔG<sub>diss</sub>  
+- interface area  
+- H-bond networks  
+
+### **Step 6 — Final Ranking with DockQ** {-}
+- Select the top structural models  
+- Compare across AF-Multimer and docking predictions  
+
+---
+
+## 6.9 Recommended Best Practices {-}
+
+- Always check **ipTM and PAE**, not only pLDDT  
+- Use **multiple model seeds** (8–20)  
+- Avoid trusting overly compact “hallucinated” complexes  
+- For weak interactions → use docking + PISA + Deep Learning voting  
+- For multi-chain systems → run subcomplexes separately  
+- Carefully curate MSAs for multimer inputs  
+- Combine AF-Multimer with docking for alternative poses  
+
+---
+
+## 6.10 Summary {-}
+
+AlphaFold-Multimer represents a major advance in protein complex prediction, enabling structural modeling of PPIs directly from sequences.  
+However, its performance varies depending on interaction type, evolutionary signals, and MSA construction.  
+To achieve reliable PPI modeling, AF-Multimer must be used in conjunction with:
+
+- docking (Chapter 2)  
+- interface analysis (Chapter 3)  
+- sequence- or deep-learning predictors (Chapters 4–5)  
+
+A hybrid workflow remains the most robust approach for accurate structural PPI prediction.

@@ -1,0 +1,31 @@
+{
+    "id": "75FC5477",
+    "path": "~/PPI_V20.11.25/05-deep-learning.Rmd",
+    "project_path": "05-deep-learning.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1763962091640.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "271,18",
+        "scrollLine": "247",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "6166:3807"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1763955094,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1763955094,
+    "read_only": false,
+    "read_only_alternatives": []
+}

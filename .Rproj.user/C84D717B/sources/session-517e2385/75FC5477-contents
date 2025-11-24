@@ -1,0 +1,283 @@
+# Deep Learning–Based PPI Prediction {#deep-learning}
+
+Deep learning (DL) has transformed protein–protein interaction (PPI) prediction by enabling models to learn complex patterns directly from amino acid sequences or embeddings.\
+Unlike sequence/knowledge-based models (Chapter 4), DL approaches do **not rely on handcrafted features**, and unlike docking methods (Chapter 2), they do **not require 3D structures**.
+
+This chapter introduces three representative deep learning frameworks for PPI prediction:
+
+-   **D-SCRIPT**
+-   **DeepPurpose (PPI module)**
+-   **MAPE-PPI**
+
+We also summarize the general DL paradigms used in PPI prediction and how these models complement other approaches.
+
+------------------------------------------------------------------------
+
+## 5.1 Why Deep Learning for PPI Prediction? {-}
+
+Traditional PPI prediction methods struggle to capture:
+
+-   high-order sequence dependencies\
+-   non-linear interaction patterns\
+-   co-evolutionary features hidden in raw sequences\
+-   structural constraints not explicitly modeled
+
+Deep learning addresses these challenges by learning **latent representations** of proteins that encode biological, chemical, and evolutionary signals.
+
+### Advantages of DL-based PPI prediction {-}
+
+-   Requires only **sequences**\
+-   Captures non-linear patterns automatically\
+-   Scales to large datasets\
+-   Compatible with pretrained protein language models\
+-   Amenable to transfer learning and fine-tuning
+
+### Limitations {-}
+
+-   Requires substantial training data\
+-   Interpretability can be low\
+-   Predictions may lack structural detail\
+-   Sensitive to dataset bias
+
+------------------------------------------------------------------------
+
+## 5.2 General Deep Learning Paradigms for PPI Prediction {-}
+
+Current DL-based models fall into several broad categories:
+
+### **1. Siamese / Twin Network Models** {-}
+
+Two proteins are encoded separately → embeddings concatenated → classifier predicts interaction.
+
+Used by:\
+- D-SCRIPT\
+- MAPE-PPI\
+- DeepPurpose (PPI module)
+
+### **2. Graph Neural Network (GNN) Models** {-}
+
+Represent proteins as residue-level or domain-level graphs.
+
+Captures:\
+- structural constraints\
+- long-range interactions\
+- co-evolution signals
+
+### **3. Transformer-Based Embedding Models** {-}
+
+Use pretrained protein language models such as:
+
+-   ESM\
+-   ProtBERT\
+-   ProtT5\
+-   MSA Transformer
+
+These embeddings feed downstream PPI classifiers.
+
+### **4. Contact Map Prediction Models** {-}
+
+Some DL tools predict **residue–residue contact maps** between protein pairs.
+
+Used by:\
+- D-SCRIPT\
+- Several co-evolution + DL hybrid models
+
+------------------------------------------------------------------------
+
+## 5.3 D-SCRIPT {-}
+
+**D-SCRIPT** is a highly influential DL model for predicting PPIs directly from amino acid sequences.
+
+### Reference {-}
+
+Sledzieski et al. (2021), *Nature Communications*
+
+### Key Features {-}
+
+-   Predicts both **interaction probability** and **residue–pair contact map**
+-   Uses **pretrained embeddings** (e.g., ESM-1b, ProtBERT)
+-   Employs a **graph-like projection module** to identify interface residues
+-   High interpretability compared to most DL models
+
+### Model Architecture {-}
+
+1.  **Protein embeddings** from pretrained LM\
+2.  **Dimensionality reduction & projection layers**\
+3.  **Outer product + CNN** to learn pairwise residue interactions\
+4.  **Aggregation into a final logistic output**
+
+### Input {-}
+
+-   Two amino acid sequences (FASTA)
+
+### Output {-}
+
+-   Interaction probability score\
+-   Optional contact map (binding interface)
+
+### Advantages {-}
+
+-   High interpretability\
+-   Does not require structural data\
+-   Suitable for organism-level PPI predictions
+
+### Limitations {-}
+
+-   Sensitive to domain distribution shift\
+-   Sequence-only model; does not generate complex structure
+
+------------------------------------------------------------------------
+
+## 5.4 DeepPurpose (PPI Module) {-}
+
+**DeepPurpose** is a multimodal deep learning toolkit originally designed for drug–target interaction (DTI) prediction, but it also includes a **PPI prediction module**.
+
+### Repository {-}
+
+<https://github.com/kexinhuang12345/DeepPurpose>
+
+### Key Features {-}
+
+-   Multiple choices of encoders:
+    -   CNN\
+    -   RNN\
+    -   Transformer\
+    -   Protein language model embeddings\
+-   Highly modular architecture\
+-   Takes **two sequences** as input and learns pairwise relationships\
+-   Easy to train on custom datasets
+
+### Input {-}
+
+-   Two protein sequences\
+-   Choice of encoding (e.g., CNN, Transformer)
+
+### Output {-}
+
+-   Interaction likelihood
+
+### Advantages {-}
+
+-   Flexible\
+-   Easy model prototyping\
+-   Suitable for benchmarking multiple encoders
+
+### Limitations {-}
+
+-   No structural interpretability\
+-   Dependent on training dataset quality
+
+------------------------------------------------------------------------
+
+## 5.5 MAPE-PPI {-}
+
+**MAPE-PPI** (Multi-view Attention and Pairwise Embedding PPI predictor) integrates multiple representations of protein sequences.
+
+### Key Features {-}
+
+-   Multi-view learning:
+    -   sequence representation\
+    -   physiochemical descriptors\
+    -   predicted structure features (e.g., contact maps)\
+-   Pairwise attention module captures cross-protein interactions\
+-   Superior performance on many benchmark datasets
+
+### Model Architecture {-}
+
+-   **Embedding module**: multiple feature channels\
+-   **Multi-view attention fusion**\
+-   **Pairwise interaction module**\
+-   **MLP classifier**
+
+### Input {-}
+
+-   Amino acid sequences\
+-   Optional structural or physiochemical features
+
+### Output {-}
+
+-   PPI probability score
+
+### Advantages {-}
+
+-   Exploits complementary feature types\
+-   Strong performance on HHRI, HopPPI, BioGRID datasets
+
+### Limitations {-}
+
+-   More complex architecture\
+-   Harder to interpret than D-SCRIPT
+
+------------------------------------------------------------------------
+
+## 5.6 Comparison of Deep Learning Models {-}
+
+| Model | Input | Architecture | Interpretability | Strengths | Limitations |
+|------------|------------|------------|-------------|------------|------------|
+| **D-SCRIPT** | Sequence | Siamese + contact map module | **High** | Interface prediction; interpretable | Slower; needs pretrained embeddings |
+| **DeepPurpose (PPI)** | Sequence | Modular CNN/RNN/Transformer | Medium | Easy to customize, fast prototyping | No structural output |
+| **MAPE-PPI** | Sequence (+ optional features) | Multi-view + attention | Medium | Strong performance across datasets | Complex; less interpretable |
+
+------------------------------------------------------------------------
+
+## 5.7 When to Use Deep Learning Models {-}
+
+DL-based models are most appropriate for:
+
+### **1. Proteome-wide screening** {-}
+
+Much faster than docking or AlphaFold-Multimer.
+
+### **2. Dataset-driven tasks** {-}
+
+Especially when curated labels exist (BioGRID / DIP / STRING).
+
+### **3. Supporting evidence** {-}
+ 
+DL models provide probability estimates that complement:
+
+-   docking poses (Chapter 2)
+-   interface stability analysis (Chapter 3)
+-   sequence-based predictions (Chapter 4)
+
+### **4. Cases lacking structural data** {-}
+
+DL methods rely solely on sequences.
+
+------------------------------------------------------------------------
+
+## 5.8 Integrating Deep Learning with Other Prediction Methods {-}
+
+A recommended workflow:
+
+1.  **Use DL models to predict PPI probability**\
+    (D-SCRIPT / DeepPurpose / MAPE-PPI)
+
+2.  **Filter high-confidence candidates**\
+    → Reduces computational burden on docking or AF-M.
+
+3.  **Generate complex structures for top candidates**
+
+    -   AlphaFold-Multimer (Chapter 6)\
+    -   Docking methods (Chapter 2)
+
+4.  **Evaluate interface using PDBePISA**\
+    (Chapter 3)
+
+5.  **Refine or redesign interactions**\
+    via mutation predictions, ML-based scoring, or experimental assays.
+
+------------------------------------------------------------------------
+
+## 5.9 Summary {-}
+
+Deep learning has become a central approach in computational PPI prediction, offering significant improvements over traditional feature-based methods. Models such as **D-SCRIPT**, **DeepPurpose**, and **MAPE-PPI** demonstrate how rich sequence embeddings and neural architectures can uncover complex biological patterns.
+
+DL-based PPI predictors:
+
+-   require minimal input\
+-   scale well\
+-   complement structural modeling tools\
+-   provide valuable interaction likelihoods
+
+However, they still lack structural mechanistic detail, which must be obtained from docking, interface analysis, or structure-generation models (Chapter 6).
