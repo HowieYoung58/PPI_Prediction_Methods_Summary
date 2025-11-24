@@ -14,25 +14,25 @@ h2:predicted-aligned-error-pae 6.4 Predicted Aligned Error (PAE)
 h2:evaluating-af-multimer-predictions-with-dockq 6.5 Evaluating AF-Multimer Predictions with DockQ
 h3:dockq-score-interpretation 
 h2:advantages-of-alphafold-multimer 6.6 Advantages of AlphaFold-Multimer
-h3:predicts-complexes-directly-from-sequence 
-h3:often-more-accurate-than-docking 
-h3:provides-residues-level-interface-confidence 
-h3:useful-for-protein-design-workflows 
-h3:does-not-require-templates-or-known-interface-information 
+h4:predicts-complexes-directly-from-sequence 
+h4:often-more-accurate-than-docking 
+h4:provides-residues-level-interface-confidence 
+h4:useful-for-protein-design-workflows 
+h4:does-not-require-templates-or-known-interface-information 
 h2:limitations-of-alphafold-multimer 6.7 Limitations of AlphaFold-Multimer
-h3:limited-for-transient-or-weak-interactions 
-h3:sensitive-to-msa-pairing 
-h3:may-generate-biologically-irrelevant-assemblies 
-h3:cannot-explore-alternative-binding-modes 
-h3:poor-performance-for 
-h3:not-ideal-for-mutation-scanning 
+h4:limited-for-transient-or-weak-interactions 
+h4:sensitive-to-msa-pairing 
+h4:may-generate-biologically-irrelevant-assemblies 
+h4:cannot-explore-alternative-binding-modes 
+h4:poor-performance-for 
+h4:not-ideal-for-mutation-scanning 
 h2:integrating-af-multimer-with-docking-pisa-and-deep-learning 6.8 Integrating AF-Multimer with Docking, PISA, and Deep Learning
-h3:step-1-sequence-level-screening 
-h3:step-2-af-multimer-structure-prediction 
-h3:step-3-evaluate-interfaces 
-h3:step-4-complement-with-docking-chapter-2 
-h3:step-5-interface-stability-with-pdbepisa-chapter-3 
-h3:step-6-final-ranking-with-dockq 
+h4:step-1-sequence-level-screening 
+h4:step-2-af-multimer-structure-prediction 
+h4:step-3-evaluate-interfaces 
+h4:step-4-complement-with-docking-chapter-2 
+h4:step-5-interface-stability-with-pdbepisa-chapter-3 
+h4:step-6-final-ranking-with-dockq 
 h2:recommended-best-practices 6.9 Recommended Best Practices
 h2:summary 6.10 Summary
 

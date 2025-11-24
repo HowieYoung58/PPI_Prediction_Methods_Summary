@@ -8,7 +8,7 @@ h3:graph-neural-network-gnn-models
 h3:transformer-based-embedding-models 
 h3:contact-map-prediction-models 
 h2:d-script 5.3 D-SCRIPT
-h3:reference Reference
+h3:repository Repository
 h3:key-features Key Features
 h3:model-architecture Model Architecture
 h3:input Input
@@ -16,13 +16,14 @@ h3:output Output
 h3:advantages Advantages
 h3:limitations-1 Limitations
 h2:deeppurpose-ppi-module 5.4 DeepPurpose (PPI Module)
-h3:repository Repository
+h3:repository-1 Repository
 h3:key-features-1 Key Features
 h3:input-1 Input
 h3:output-1 Output
 h3:advantages-1 Advantages
 h3:limitations-2 Limitations
 h2:mape-ppi 5.5 MAPE-PPI
+h3:repository-2 Repository
 h3:key-features-2 Key Features
 h3:model-architecture-1 Model Architecture
 h3:input-2 Input

@@ -1,0 +1,248 @@
+# Sequence- and Knowledge-Based PPI Prediction Models {#sequence-knowledge}
+
+Sequence- and knowledge-based PPI prediction methods rely on evolutionary, functional, domain, or literature-derived information rather than 3D structural data.  
+These approaches are particularly useful when **protein structures are unavailable**, or when **large-scale network inference** is required.
+
+This chapter summarizes four widely used resources and models:
+
+- **STRING**
+- **PrePPI**
+- **PPI-Miner**
+- **COTH**
+
+Together, they represent the major paradigms for sequence-level and knowledge-driven PPI prediction.
+
+---
+
+## 4.1 Overview of Sequence / Knowledge-Based Methods {-}
+
+Unlike docking or structural analysis (Chapters 2–3), sequence- and knowledge-based approaches aim to answer:
+
+> **“Do protein A and B interact?”**  
+> (Without predicting how they bind.)
+
+These methods make use of one or more of the following information sources:
+
+### **4.1.1. Evolutionary Features** {-}
+- Orthology
+- Co-evolution signals
+- Sequence similarity
+- Phylogenetic profiles
+
+### **4.1.2. Functional Annotation** {-}
+- Gene Ontology (GO)
+- Pfam / InterPro domains
+- KEGG pathways
+
+### **4.1.3. Literature Mining & Text Evidence** {-}
+- co-mention in articles
+- NLP extraction of interactions
+- curated knowledge bases
+
+### **4.1.4. Biological Network Topology** {-}
+- shared neighbors
+- clustering in interaction networks
+- pathway co-membership
+
+### **4.1.5. Homology-Based Templates** {-}
+Predicted interactions are transferred from known complexes with homologs.
+
+These features are combined to produce a final **interaction probability score**.
+
+---
+
+## 4.2 STRING {-}
+
+**STRING (Search Tool for the Retrieval of Interacting Genes/Proteins)**  
+One of the most widely used databases for large-scale PPI predictions.
+
+Website: https://string-db.org/
+
+### Key Features {-}
+- Integrates **multiple evidence channels**:
+  - experimental data
+  - text mining
+  - co-expression
+  - genomic neighborhood
+  - gene fusion
+  - co-occurrence
+  - curated databases
+- Interaction scores are **probabilistic** and evidence-weighted.
+- Organism-wide PPI network available for hundreds of species.
+
+### Input {-}
+- Protein name / gene ID
+- Organism selection
+
+### Output {-}
+- Interaction scoring matrix  
+- Network visualization  
+- Evidence breakdown  
+- Functional modules  
+
+### Advantages {-}
+- Comprehensive and easy to navigate  
+- Strong integration of heterogeneous data  
+- Suitable for **global PPI network analysis**
+
+### Limitations {-}
+- Does not predict binding interface  
+- Text-mined connections may be noisy  
+- Not designed for structural predictions
+
+---
+
+## 4.3 PrePPI {-}
+
+**PrePPI** is a hybrid sequence- and structure-informed PPI predictor.
+
+Website: https://honiglab.c2b2.columbia.edu/PrePPI/
+
+### Key Features {-}
+- Integrates >10 evidence types:
+  - homology-based structural templates  
+  - functional annotation  
+  - co-expression  
+  - phylogenetic profiles  
+  - domain interactions  
+- Bayesian framework combining all evidence  
+- Incorporates structural analogs even when structures are not available
+
+### Input {-}
+- Protein pairs (ID or sequence)
+
+### Output {-}
+- Interaction probability  
+- Contribution breakdown of each evidence type  
+- Structural template suggestions (when available)
+
+### Advantages {-}
+- Hybrid (sequence + structure) improves accuracy  
+- High coverage for proteome-level predictions  
+- Useful for hypothesis generation
+
+### Limitations {-}
+- Dependent on template availability  
+- No full 3D complex output (unlike docking)
+
+---
+
+## 4.4 PPI-Miner {-}
+
+**PPI-Miner** uses **literature mining (NLP)** to extract PPI evidence.
+
+Website: http://caps.ncbs.res.in/ppiminer/
+
+### Key Features {-}
+- Extracts co-occurrences of protein names in PubMed articles  
+- Uses NLP and text-pattern heuristics  
+- Curates interaction keywords  
+
+### Input {-}
+- Gene symbol / protein name
+
+### Output {-}
+- Ranked list of candidate PPIs  
+- Supporting literature evidence  
+- Article references  
+
+### Advantages {-}
+- Finds literature-supported interactions not present in curated DBs  
+- Can serve as complementary evidence to biochemical predictions
+
+### Limitations {-}
+- Sensitive to text-mining noise  
+- No structural or sequence analysis  
+- Limited to proteins discussed in literature
+
+---
+
+## 4.5 COTH {-}
+
+**COTH (COmplex Threading and Homology modeling)** predicts PPI using **template-based modeling** without requiring full structural docking.
+
+Website: https://zhanggroup.org/COTH/
+
+### Key Features {-}
+- Predicts interactions by threading sequence pairs onto known complex templates  
+- Identifies interacting domains and interface residues  
+- Assigns confidence scores (C-score)  
+- Can work even when full structures are unknown
+
+### Input {-}
+- FASTA sequences of two proteins
+
+### Output {-}
+- Predicted interaction confidence  
+- Interface residues  
+- Representative complex template  
+
+### Advantages {-}
+- Better structural insight compared to other sequence-only methods  
+- Does not require docking  
+- Good when homologous templates exist
+
+### Limitations {-}
+- Template-limited  
+- Structural detail lower than docking/AlphaFold-Multimer  
+
+---
+
+## 4.6 Comparison of Sequence / Knowledge-Based Tools {-}
+
+| Tool | Type | Data Sources | Output | Strengths | Limitations |
+|------|------|--------------|---------|-----------|-------------|
+| **STRING** | Integrated / knowledge-based | Genomics, co-expression, text mining, experiments | PPI network + scores | Large-scale network; high coverage | Not structural; mixed noise |
+| **PrePPI** | Hybrid (sequence + template) | Evolutionary, functional, templates | Interaction probability | Multi-evidence integration | No complex structure |
+| **PPI-Miner** | Literature mining | PubMed articles | PPI + supporting texts | Finds literature-based interactions | No sequence/structure use |
+| **COTH** | Template-based | Structural template DB + threading | Interface prediction | Provides structural hints | Template availability limited |
+
+---
+
+## 4.7 When to Use Sequence / Knowledge-Based Methods {-}
+
+These models are best suited for:
+
+### **4.7.1. Proteome-wide filtering** {-}
+Before expensive docking or AlphaFold-Multimer predictions.
+
+### **4.7.2. Finding candidates for experimental validation** {-}
+STRING/PrePPI are commonly used in early discovery.
+
+### **4.7.3. Supporting evidence** {-}
+Combine with:
+
+- docking scores  
+- interface energy (PDBePISA)  
+- deep learning predictions (Chapter 5)  
+
+### **4.7.4. When structural data is unavailable** {-}
+COTH and PrePPI can still provide useful interaction hypotheses.
+
+---
+
+## 4.8 Integrating Knowledge-Based Tools into a Workflow {-}
+
+A practical example:
+
+1. **STRING**  
+   → identify co-functional proteins likely to interact  
+2. **PrePPI / COTH**  
+   → obtain structural analogs or domain-level interaction hints  
+3. **Docking (Chapter 2)**  
+   → predict 3D complex  
+4. **PDBePISA (Chapter 3)**  
+   → analyze interface stability  
+5. **AlphaFold-Multimer (Chapter 6)**  
+   → generate high-confidence structures  
+6. **Deep Learning (Chapter 5)**  
+   → cross-check sequence-level plausibility  
+
+This multi-stage screening increases reliability and reduces false positives.
+
+---
+
+## 4.9 Summary {-}
+
+Sequence- and knowledge-based PPI prediction methods provide **broad coverage**, **fast inference**, and **useful functional context**, although they lack structural specificity.  
+They serve as essential tools for hypothesis generation and proteome-wide screening and complement both docking-based and deep learning–based predictions.
