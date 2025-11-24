@@ -81,7 +81,7 @@ ipTM is the most important indicator of whether AF-Multimer believes two protein
 - **< 0.4** → likely non-interacting or incorrect interface  
 
 ### **Recommended composite score:** {-}
-- 0.8 * ipTM + 0.2 * pTM
+**0.8 × ipTM + 0.2 × pTM**
 Used for ranking multiple Multimer models.
 
 ---
@@ -196,7 +196,7 @@ Run AF-Multimer using:
 
 - multiple seeds  
 - paired MSAs  
-- rank models by (0.8 × ipTM + 0.2 × pTM)
+- rank models by (0.8×ipTM + 0.2×pTM)
 
 ### **Step 3 — Evaluate Interfaces** {-} 
 Use:
