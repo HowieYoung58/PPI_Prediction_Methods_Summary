@@ -1,1 +1,1 @@
-Click here -> https://hayesyoung58.github.io/PPI_Prediction_Methods_Summary/
+Click here -> [https://howieyoung58.github.io/PPI_Prediction_Methods_Summary/]
