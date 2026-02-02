@@ -15,7 +15,7 @@ github-repo: "rstudio/bookdown-demo"
 ---
 # Preface {-}
 
-Notes repository (GitHub)：https://github.com/HayesYoung58/PPI_Prediction_Methods_Summary
+Notes repository (GitHub)：https://github.com/HowieYoung58/PPI_Prediction_Methods_Summary
 
 This study note is a summary of **computational methods for Protein–Protein Interaction (PPI) prediction**.  
 Its goal is to organize existing tools, prediction paradigms, and representative models into clear methodological categories, enabling both beginners and researchers to quickly understand the landscape of PPI analysis.
